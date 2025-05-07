@@ -90,7 +90,7 @@ function deyisSvg(currentSvg){
     arr.find((item,ind)=>ind==currentSvg).classList.add('hidden');
 
     if(currentSvg==0){ bittimi.checked=true; validation()}
-    else bittimi.checked=false
+    else {bittimi.checked=false ;validation()}
 
     svgLer.classList.add('spark-active');
     setTimeout(() => {
@@ -174,6 +174,11 @@ timer();
 
 function validation() {
     if (email.value.trim() !== '' && yazilanNomre.value.trim() !== '' && bittimi.checked ) {
-        btn.classList.replace('opacity-65','opacity-100');
+        btn.classList.remove('opacity-65','opacity-100');
+        btn.classList.add('opacity-100');
+    }
+    else{
+        btn.classList.remove('opacity-65','opacity-100');
+        btn.classList.add('opacity-65');
     }
   }
