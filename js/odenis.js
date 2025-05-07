@@ -38,12 +38,15 @@ function melumatiYukle(){
 }
 melumatiYukle()
 
+let len;
 function nomre(){
     let text=yazilanNomre.value;
     let arr=text.split('')
     arr=arr.filter(word=>!isNaN(word)&& word.trim() !== '') 
     arr=arr.slice(0,9);
     if(arr[0]==0) arr=arr.slice(1)
+    len=arr.length
+     
     let arrSon=[];
     arr.forEach((num,ind)=>{
         if(ind==0||ind==1) arrSon.push(num)
@@ -109,9 +112,9 @@ function tamamla(){
             notification.classList.replace('bottom-[32px]','bottom-[-100px]') 
         },6000)
     }
-    else if(yazilanNomreVal==''){
+    else if(yazilanNomreVal=='' || len<9){
         notification.classList.replace('bottom-[-100px]','bottom-[32px]')
-        notification.querySelector('p').innerHTML='Zəhmət olmasa nömrənizi qeyd edin';
+        notification.querySelector('p').innerHTML='Zəhmət olmasa nömrənizi tam qeyd edin';
         setTimeout(()=>{
             notification.classList.replace('bottom-[32px]','bottom-[-100px]') 
         },6000)
