@@ -144,7 +144,7 @@ function ac(div){
 
         console.log(basket);
         rengMeselesi(div)
-        ul.status=true
+        
     }
     else{
         ul.status=!ul.status
