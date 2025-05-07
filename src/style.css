@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Fira Sans',serif;
+}
+
+.hoverOl:hover .bgDeyis{
+  background-color: white;
+}
+.art:hover .scaleIm{
+  transform: scale(1.05);
+}
+::-webkit-scrollbar {
+  width: 10px; 
+}
+::-webkit-scrollbar-track {
+  background: #373737;
+}
+::-webkit-scrollbar-thumb {
+  background: #d52b1e;
+  border-radius: 10px;
+}
+
+
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  margin: 0 ;
+  padding: 0 ;
+}
+
+
+
+.custom-date-input {
+  -webkit-appearance: none; /* Для WebKit */
+  -moz-appearance: textfield; /* Для Firefox */
+  appearance: none; /* Универсально */
+
+  font-size: 16px;
+}
+
+/* Убираем стрелки для ввода чисел в некоторых браузерах */
+.custom-date-input::-webkit-inner-spin-button,
+.custom-date-input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+
+@keyframes spark {
+  0% {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+  50% {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+  }
+  100% {
+    background: none;
+  }
+}
+
+.spark-active {
+  animation: spark 1.5s ease-in-out;
+}

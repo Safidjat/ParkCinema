@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+
+@theme {
+    --color-body: #373737;
+    --color-txt: #d9dadb;
+    --breakpoint-next: 650px;
+    --breakpoint-next0: 640px;
+    --breakpoint-pr0: 540px;
+    --breakpoint-pr1: 470px;
+    --breakpoint-pr: 610px;
+    --breakpoint-pr2: 620px;
+    --breakpoint-next1: 690px;
+    --breakpoint-next2: 500px;
+    --breakpoint-fi: 320px;
+    --breakpoint-fii: 390px;
+    --breakpoint-fi2: 400px;
+    --breakpoint-fi0: 250px;
+    --breakpoint-fi1: 370px;
+    --breakpoint-hight1: 420px;
+    --breakpoint-desk: 770px;
+    --breakpoint-desk2: 890px;
+    --breakpoint-gapp: 1030px;
+    --breakpoint-fut: 1160px;
+    --breakpoint-fut1: 1272px;
+}

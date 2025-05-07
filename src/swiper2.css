@@ -1,0 +1,41 @@
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+    height: 100px;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #373737;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+  }
+
+  .swiper-button-next:after,
+.swiper-button-prev:after{
+    color: #d9dadb !important;
+  font-size: 22px !important;
+  opacity: 1 !important; 
+  font-weight: 700;
+  font-family: Arial, sans-serif; 
+}
+.swiper-button-next:disabled,
+.swiper-button-prev:disabled{
+    color: #d9dadb !important; 
+    opacity: 1 !important; 
+}
+
+.swiper-button-prev:after{
+    position: absolute;
+    left:-4px;
+}
+.swiper-button-next:after{
+    position: absolute;
+    right:-4px;
+}
+
+
