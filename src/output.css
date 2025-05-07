@@ -235,9 +235,6 @@
   .left-8 {
     left: calc(var(--spacing) * 8);
   }
-  .left-\[34px\] {
-    left: 34px;
-  }
   .left-\[80px\] {
     left: 80px;
   }
@@ -899,6 +896,12 @@
   }
   .py-\[56px\] {
     padding-block: 56px;
+  }
+  .pr-\[10px\] {
+    padding-right: 10px;
+  }
+  .pr-\[20px\] {
+    padding-right: 20px;
   }
   .pb-\[8px\] {
     padding-bottom: 8px;

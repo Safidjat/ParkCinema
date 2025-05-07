@@ -34,7 +34,8 @@ function secimAc(ind){
         hallar.forEach((item, index) => {
             if (index !== ind) hallar[index] = false;
         });
-        // document.body.style.overflow = 'hidden';
+        document.querySelector('body').classList.add('overflow-hidden')
+        document.querySelector('body').classList.add('pr-[10px]')
     }
     else{
         vibori[ind].querySelector('ul').classList.remove('h-0','h-[180px]')
@@ -44,10 +45,13 @@ function secimAc(ind){
         if(strs[ind].classList.contains('rotate-180')) strs[ind].classList.remove('rotate-180')
         hallar[ind]=false;
 
-        
+        if(document.querySelector('body').classList.contains('overflow-hidden')) document.body.classList.remove('overflow-hidden')
+        if(document.querySelector('body').classList.contains('pr-[10px]')) document.body.classList.remove('pr-[10px]')
     }
     
     console.log(hallar);
+    
+    
     document.onclick=closeOutside
 }
 
@@ -68,17 +72,26 @@ function closeOutside(e){
         strs.forEach(item=>{
             if(item.classList.contains('rotate-180')) item.classList.remove('rotate-180')
         })
+        
     }
-    if(!yaz.contains(e.target)){
+    if(typeof yaz === 'undefined'||!yaz.contains(e.target)){
         hal3=false
-        if(bu.classList.contains('hidden')) bu.classList.remove('hidden')
-        if(!inp.classList.contains('hidden')) inp.classList.add('hidden')
-        if(yaz.classList.contains('border-b-[#e94032]')) yaz.classList.replace('border-b-[#e94032]','border-b-white')
-        cal.classList.remove('h-0','h-[351px]')
-        cal.classList.add('h-0')
+        if(typeof bu != 'undefined') if(bu.classList.contains('hidden')) bu.classList.remove('hidden')
+        if(typeof inp != 'undefined') if(!inp.classList.contains('hidden')) inp.classList.add('hidden')
+        if(typeof yaz != 'undefined'){
+            if(yaz.classList.contains('border-b-[#e94032]')) yaz.classList.replace('border-b-[#e94032]','border-b-white')
+        }
+        if(typeof cal != 'undefined'){
+            cal.classList.remove('h-0','h-[351px]')
+            cal.classList.add('h-0')
+        }
+        
         hal4=false;
     }
-    
+    if((!dilSecimi.contains(e.target) && !kinoSecimi.contains(e.target) && (typeof yaz === 'undefined'||!yaz.contains(e.target)))){
+        if(document.querySelector('body').classList.contains('overflow-hidden')) document.body.classList.remove('overflow-hidden')
+        if(document.querySelector('body').classList.contains('pr-[10px]')) document.body.classList.remove('pr-[10px]')
+    }
 }
 
 
