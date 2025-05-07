@@ -144,10 +144,11 @@ function ac(div){
 
         console.log(basket);
         rengMeselesi(div)
+        ul.status=true
     }
     else{
-        // ul.status=!ul.status
-        ul.status=true
+        ul.status=!ul.status
+        
         console.log(ul.status);
         
         if(ul.status) {
