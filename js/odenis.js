@@ -133,7 +133,18 @@ function tamamla(){
 
 function whatsappTo(){
     const val=yazilanNomre.value.split(' ').join('');
-    const url  = ` https://wa.me/994${val}?text=${kino[0].ad}%20baxmaq%20istəyirsənsə%20${kino[0].tarix}%20tarixində%20saat%20${kino[0].vaxt}-də%20${kino[0].mekan}%20teatrın%20${kino[0].zal}%20nömrəli%20zalında%20ol!`
+    // const url = `https://wa.me/994${nomre.value}?text=${
+    //     encodeURIComponent(`${item.movie.name} ${item.theatreTitle} Cinema Zalında saat ${item.date.slice(8, 10)}.${item.date.slice(5, 7)}.${item.date.slice(0, 4)} ${item.time} ${item.hallTitle} - ${
+    //       tickets.map(elem => Sıra ${elem.sira.slice(0,2)} Yer ${elem.yer.slice(0,2)} (${elem.type})).join(', ')
+    //     }`)
+    //   }`;
+    
+    const url  = ` https://wa.me/994${val}?text=
+                ${kino[0].ad}%20baxmaq%20istəyirsənsə%20${kino[0].tarix}%20tarixində%20saat%20${kino[0].vaxt}-də%20${kino[0].mekan}%20teatrın%20${kino[0].zal}%20nömrəli%20zalında%20ol!
+                Oturacaqlarin:%20${basket.map(obj=>{
+                    return `Sıra ${obj.row}, Yer ${obj.seat} (${obj.category})/`
+                }).join('')}
+                `
     window.open( url )
 }
 
