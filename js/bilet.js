@@ -163,7 +163,13 @@ function ac(div){
         if(ul.status) {
             if(ul.classList.contains('h-0')) {
                 if(!(basket.filter(item=>item.category=='Ailə').length>=1 && basket.filter(item=>item.category=='Ailə').length<4)) {
-                    if(basket.filter(item=>item.category=='Ailə').length>=4) Array.from(ul.querySelectorAll('li'))[0].classList.add('hidden')
+                    if(basket.filter(item=>item.category=='Ailə').length>=4) {
+                        Array.from(ul.querySelectorAll('li'))[0].classList.remove('hidden')
+                        Array.from(ul.querySelectorAll('li'))[0].classList.add('hidden')
+                    }
+                    else{
+                        Array.from(ul.querySelectorAll('li'))[0].classList.remove('hidden')
+                    }
                     
                     ul.classList.replace('h-0',`${discountsInfo.length==2? 'h-[82px]': 'h-[123px]'}`)
                     div.classList.replace('bg-txt','bg-[#ff9c10]');
