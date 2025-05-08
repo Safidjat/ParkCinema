@@ -88,10 +88,19 @@ function zaliCixart(){
             kod2+=`<button value="${n},${j}" onclick="event.stopPropagation(),ac(this)" class="but relative bg-txt cursor-pointer w-[26px] h-[26px] grid place-items-center rounded-[8px] text-[14px] text-[#353535]">${j}`;
             const list= `
                     ${
-                        discountsInfo.map(item=>{
-                            const tip=item.type=='FAMILY'? 'Ailə': item.type== 'ADULT'? 'Böyük': 'DOUBLE'
-                        return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${item.type=='FAMILY'? 'Ailə': item.type == 'ADULT'? 'Böyük': 'DOUBLE'} </span></li>`
-                    }).join('')
+                        discountsInfo.map(item => {
+                            if (item.type == 'FAMILY' && basket.filter(basketItem => basketItem.category == 'Ailə').length==0) {
+                                const tip = 'Ailə';
+                                return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                            } else if (item.type == 'ADULT') {
+                                const tip = 'Böyük';
+                                return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                            } else if (item.type == 'DOUBLE') {
+                                const tip = 'DOUBLE';
+                                return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                            }
+                            
+                        }).join('')
                     } `
             kod2+=`<ul class="absolute top-full h-0 z-[10] text-[#353535] rounded-lg overflow-hidden  duration-200 ">${list}</ul>`
             kod2+=`</button>`
@@ -153,7 +162,9 @@ function ac(div){
         
         if(ul.status) {
             if(ul.classList.contains('h-0')) {
-                if(!basket.filter(item=>item.category=='Ailə').length>=1) {
+                if(!(basket.filter(item=>item.category=='Ailə').length>=1 && basket.filter(item=>item.category=='Ailə').length<4)) {
+                    if(basket.filter(item=>item.category=='Ailə').length>=4) Array.from(ul.querySelectorAll('li'))[0].classList.add('hidden')
+                    
                     ul.classList.replace('h-0',`${discountsInfo.length==2? 'h-[82px]': 'h-[123px]'}`)
                     div.classList.replace('bg-txt','bg-[#ff9c10]');
                     div.classList.replace('text-[#353535]','text-white');
