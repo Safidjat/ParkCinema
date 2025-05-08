@@ -37,7 +37,7 @@ function zaliCixart(){
     
     let kod=''
     let s=12
-    for(let i=0;i<11;i++){
+    for(let i=0;i<5;i++){
         kod+=`<div class="flex items-center gap-[8px]">`
         s-=1
         for(let j=1;j<3;j++){
@@ -136,6 +136,7 @@ function zaliCixart(){
 
 
 /////////Zal Funksionalligi//////////////////////////////////////////////////////
+let count=0
 function ac(div){
     const ul=div.querySelector('ul')
     
@@ -165,14 +166,64 @@ function ac(div){
             if(ul.classList.contains('h-0')) {
                 if(!(basket.filter(item=>item.category=='Ailə').length>=1 && basket.filter(item=>item.category=='Ailə').length<4)) {
                     if(basket.filter(item=>item.category=='Ailə').length>=4) {
-                        Array.from(ul.querySelectorAll('li'))[0].classList.remove('hidden')
-                        Array.from(ul.querySelectorAll('li'))[0].classList.add('hidden')
+                        ul.innerHTML=''
+                        count=0
+                        ul.innerHTML+=`
+                        ${
+                            discountsInfo.map(item => {
+                                if (item.type == 'FAMILY' && basket.filter(basketItem => basketItem.category == 'Ailə').length==0) {
+                                    const tip = 'Ailə';
+                                    count++
+                                    return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                                } else if (item.type == 'ADULT') {
+                                    const tip = 'Böyük';
+                                    count++
+                                    return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                                } else if (item.type == 'DOUBLE') {
+                                    const tip = 'DOUBLE';
+                                    count++
+                                    return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                                }
+                                
+                            }).join('')
+                        }
+                        `
+                        // Array.from(ul.querySelectorAll('li'))[0].classList.remove('hidden')
+                        // Array.from(ul.querySelectorAll('li'))[0].classList.add('hidden')
                     }
                     else{
-                        Array.from(ul.querySelectorAll('li'))[0].classList.remove('hidden')
+                        ul.innerHTML=''
+                        count=0
+                        ul.innerHTML+=`
+                        ${
+                            discountsInfo.map(item => {
+                                if (item.type == 'FAMILY' && basket.filter(basketItem => basketItem.category == 'Ailə').length==0) {
+                                    const tip = 'Ailə';
+                                    count++
+                                    return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                                } else if (item.type == 'ADULT') {
+                                    const tip = 'Böyük';
+                                    count++
+                                    return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                                } else if (item.type == 'DOUBLE') {
+                                    const tip = 'DOUBLE';
+                                    count++
+                                    return `<li onclick="event.stopPropagation(),yukle(${item.val},this,'${tip}')" class="py-[10px] px-[22px] bg-txt   backdrop-blur-xs opacity-85 hover:bg-[#d52b1e] hover:text-white"><span class="backdrop-blur-sm">${tip}</span></li>`;
+                                }
+                                
+                            }).join('')
+                        }
+                        `
+                        // Array.from(ul.querySelectorAll('li'))[0].classList.remove('hidden')
                     }
                     
-                    ul.classList.replace('h-0',`${discountsInfo.length==2? 'h-[82px]': 'h-[123px]'}`)
+                    ul.classList.replace('h-0',`${
+                        count == 1
+                            ? 'h-[41px]'
+                            : count == 2
+                            ? 'h-[82px]'
+                            : 'h-[123px]'
+                    }`)
                     div.classList.replace('bg-txt','bg-[#ff9c10]');
                     div.classList.replace('text-[#353535]','text-white');
                 }
@@ -198,7 +249,19 @@ function ac(div){
 }
 function bagla(ul){
     const parentDiv = ul.parentElement;
-    if(ul.classList.contains(`${discountsInfo.length==2? 'h-[82px]': 'h-[123px]'}`)) ul.classList.replace(`${discountsInfo.length==2? 'h-[82px]': 'h-[123px]'}`,'h-0')
+    if(ul.classList.contains(`${
+        count == 1
+            ? 'h-[41px]'
+            : count == 2
+            ? 'h-[82px]'
+            : 'h-[123px]'
+    }`)) ul.classList.replace(`${
+        count == 1
+            ? 'h-[41px]'
+            : count == 2
+            ? 'h-[82px]'
+            : 'h-[123px]'
+    }`,'h-0')
     parentDiv.classList.replace('bg-[#ff9c10]','bg-txt');
     if(!parentDiv.classList.contains('bg-[#d52b1e]')) parentDiv.classList.replace('text-white','text-[#353535]');
 }
@@ -227,7 +290,19 @@ function yukle(price,li,tip){
     const hisParent=li.parentElement.parentElement;
     hisParent.secilib=true;
     rengMeselesi(hisParent)
-    if(ul.classList.contains(`${discountsInfo.length==2? 'h-[82px]': 'h-[123px]'}`)) ul.classList.replace(`${discountsInfo.length==2? 'h-[82px]': 'h-[123px]'}`,'h-0')
+    if(ul.classList.contains(`${
+        count == 1
+            ? 'h-[41px]'
+            : count == 2
+            ? 'h-[82px]'
+            : 'h-[123px]'
+    }`)) ul.classList.replace(`${
+        count == 1
+            ? 'h-[41px]'
+            : count == 2
+            ? 'h-[82px]'
+            : 'h-[123px]'
+    }`,'h-0')
     console.log(hisParent.secilib);
     console.log(hisParent.value);
 
