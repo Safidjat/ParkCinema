@@ -153,7 +153,8 @@ function ac(div){
 
         console.log(basket);
         rengMeselesi(div)
-        
+        hamisiniBagla()
+        falseOlanlariBagla()
     }
     else{
         ul.status=!ul.status
